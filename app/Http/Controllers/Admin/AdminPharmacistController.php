@@ -24,7 +24,7 @@ class AdminPharmacistController extends Controller
                 'regex:/^[a-zA-Z0-9_.\s]+$/',
                 'min:3',
                 'max:255',
-                Rule::unique('users', 'username')
+                Rule::unique('users', 'username') ,
                 // Rule::unique('users', 'username')->where('disabled', 'false')
             ],
             'password' => ['required', 'confirmed',  Password::min(8)->max(50)->letters()->numbers()],
