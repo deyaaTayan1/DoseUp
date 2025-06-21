@@ -23,7 +23,7 @@ Route::prefix('admin')->group(function () {
         Route::get('getAllPharmacists', [AdminPharmacistController::class, 'getAllPharmacists']);
         Route::post('createPharmacist', [AdminPharmacistController::class, 'createPharmacist']);
         Route::get('showPharmacist/{id}', [AdminPharmacistController::class, 'showPharmacist']);
-        Route::put('editPharmacist/{id}', [AdminPharmacistController::class, 'editPharmacist']);
+        Route::post('editPharmacist/{id}', [AdminPharmacistController::class, 'editPharmacist']);
         Route::delete('deletePharmacist/{id}', [AdminPharmacistController::class, 'deletePharmacist']);
     });
 });

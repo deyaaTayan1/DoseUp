@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PharmacistResource;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -47,16 +48,9 @@ class AdminPharmacistController extends Controller
 
         ]);
 
-
         return response()->json([
             'message' => 'pharmacist created successfully',
-            'pharmacist' => [
-                'id' => $pharmacist->id,
-                'username' => $pharmacist->username,
-                'salary' => $pharmacist->salary,
-                'role' => $pharmacist->role,
-                'created_at' => $pharmacist->created_at->format('Y-m-d h:i'),
-            ],
+            'pharmacist' => new PharmacistResource($pharmacist)
         ], 201);
     }
 
@@ -72,7 +66,7 @@ class AdminPharmacistController extends Controller
 
         return response()->json([
             'message' => 'pharmacists retrieved successfully',
-            'pharmacists' => $pharmacists
+            'pharmacists' => PharmacistResource::collection($pharmacists)
         ], 200);
     }
 
@@ -87,7 +81,7 @@ class AdminPharmacistController extends Controller
         }
         return response()->json([
             'message' => 'pharmacist retrieved successfully',
-            'pharmacist' => $pharmacist,
+            'pharmacist' => new PharmacistResource($pharmacist)
         ]);
     }
 
@@ -138,7 +132,7 @@ class AdminPharmacistController extends Controller
 
         return response()->json([
             'message' => 'Pharmacist updated successfully',
-            'pharmacist' => $pharmacist
+            'pharmacist' => new PharmacistResource($pharmacist)
         ], 200);
     }
 
