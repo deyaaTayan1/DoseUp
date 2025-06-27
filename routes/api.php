@@ -38,4 +38,3 @@ Route::prefix('pharmacist')->group(function () {
         Route::post('logout', [PharmacistAuthController::class, 'logout']);
     });
 });
-
